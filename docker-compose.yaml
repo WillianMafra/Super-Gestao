@@ -6,8 +6,8 @@ services:
       dockerfile: Dockerfile
     image: super-gestao  # Nome da imagem personalizada
     ports:
-      - "8000:8000"
-    command: php artisan serve --host=0.0.0.0 --port=8000
+      - "8080:8080"
+    command: php artisan serve --host=0.0.0.0 --port=8080
     volumes:
       - .:/var/www/html
     environment:
