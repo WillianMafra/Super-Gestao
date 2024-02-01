@@ -22,6 +22,7 @@ Route::get('/', [\App\Http\Controllers\principalController::class, 'principal'])
 
 Route::get('sobrenos', [\App\Http\Controllers\sobreNosController::class, 'sobrenos'])->name('site.sobrenos');
 Route::get('contato', [\App\Http\Controllers\contatoController::class, 'contato'])->name('site.contato');
+Route::post('contato', [\App\Http\Controllers\contatoController::class, 'contato'])->name('site.contato');
 Route::get('/login', [\App\Http\Controllers\contatoController::class, 'contato'])->name('site.login');
 
 // Agrupar rotas com o prefixo /app

@@ -19,7 +19,7 @@ services:
       DB_PASSWORD: secret
 
   db:
-    image: postgres:latest
+    image: pgsql:latest
     ports:
       - "5432:5432"
     environment:
