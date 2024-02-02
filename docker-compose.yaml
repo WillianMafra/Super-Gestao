@@ -25,4 +25,4 @@ services:
     environment:
       POSTGRES_DB: laravel
       POSTGRES_USER: laravel_user
-      POSTGRES_PASSWORD: secret
+      POSTGRES_PASSWORD: secret 
