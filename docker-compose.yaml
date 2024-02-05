@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    restart: always
     image: super-gestao  # Nome da imagem personalizada
     ports:
       - "8080:8080"
@@ -17,6 +18,10 @@ services:
       DB_DATABASE: laravel
       DB_USERNAME: laravel_user
       DB_PASSWORD: secret
+    depends_on:
+      - db
+    networks:
+      - mynetwork
 
   db:
     image: postgres:latest
@@ -25,4 +30,15 @@ services:
     environment:
       POSTGRES_DB: laravel
       POSTGRES_USER: laravel_user
-      POSTGRES_PASSWORD: secret 
+      POSTGRES_PASSWORD: secret
+    restart: always
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data  # Caminho relativo para o subdiretório dentro da pasta do projeto
+    networks:
+      - mynetwork
+ 
+networks:
+  mynetwork:
+ 
+volumes:
+  pg_data:
