@@ -5,7 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\siteContato;
+use Database\Factories\siteContatoFactory;
 use Illuminate\Support\Facades\DB;
+\App\Models\SiteContato::factory()->count(100)->create();
 
 class siteContatoSeeder extends Seeder
 {
@@ -31,5 +33,7 @@ class siteContatoSeeder extends Seeder
             'mensagem' => 'Testando Seeder 2'
         ];
         DB::table('site_contatos')->insert($dados);
+
+        \App\Models\SiteContato::factory()->count(100)->create();
     }
 }
