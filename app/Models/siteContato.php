@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class siteContato extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nome',
+        'site',
+        'email',
+        'motivo_contato',
+        'mensagem',
+        'telefone'
+    ];
 }
