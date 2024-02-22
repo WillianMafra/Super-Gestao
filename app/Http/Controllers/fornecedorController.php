@@ -16,4 +16,13 @@ class fornecedorController extends Controller
     public function index(){
         return view('app.fornecedor.index');
     }
+
+    public function listar(Request $request){
+        return view('app.fornecedor.listar');
+    }
+
+    public function adicionar(Request $request){
+
+        return view('app.fornecedor.adicionar');
+    }
 }

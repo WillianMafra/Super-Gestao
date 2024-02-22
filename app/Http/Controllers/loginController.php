@@ -15,8 +15,9 @@ class loginController extends Controller
         $this->middleware('log.acesso');
     }
 
-    public function index(){
-        return view('site.login', ['titulo' => 'Login']);
+    public function index(Request $request){
+        $erroLogin = $request->get('erroLogin');
+        return view('site.login', ['titulo' => 'Login', 'erroLogin' => $erroLogin]);
     }
 
     public function autenticar(Request $request){
@@ -40,12 +41,19 @@ class loginController extends Controller
 
         // Tentar a autenticacao do usuário
         if (Auth::attempt($credenciais)) {
-            // Authentication was successful
-            echo 'deu boa';
-            // return redirect()->intended('dashboard');
+            $request->session()->put('autenticado', true);
+            return redirect()->route('app.home');
         } else {
-            echo 'deu ruim';
+            $request->session()->invalidate();
+            $erroLogin = 'Usuário ou senha inválido';
+            $request->session()->put('erroSessao', $erroLogin);
+
+            return redirect()->route('site.login', ['erroLogin' => $erroLogin]);
         }
-        // dd($request);
+    }
+
+    public function sair(Request $request){
+        $request->session()->invalidate();
+        return redirect()->route('site.login');
     }
 }

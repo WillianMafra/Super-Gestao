@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('log_acessos', function (Blueprint $table) {
             $table->id();
             $table->string('ip', 20);
-            $table->string('rota', 20);
+            $table->string('rota', 200);
             $table->timestamps();
         });
     }

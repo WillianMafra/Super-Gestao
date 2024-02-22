@@ -26,14 +26,22 @@ Route::get('sobrenos', [\App\Http\Controllers\sobreNosController::class, 'sobren
 Route::get('contato', [\App\Http\Controllers\contatoController::class, 'contato'])->name('site.contato');
 Route::post('contato', [\App\Http\Controllers\contatoController::class, 'salvarContato'])->name('site.contato');
 
-Route::get('/login', [\App\Http\Controllers\loginController::class, 'index'])->name('site.login');
+Route::get('/login/{erroLogin?}', [\App\Http\Controllers\loginController::class, 'index'])->name('site.login');
 Route::post('/login', [\App\Http\Controllers\loginController::class, 'autenticar'])->name('site.login');
 
 // Agrupar rotas com o prefixo /app
-Route::prefix('/app')->group( function(){
-    Route::get('/clientes', [\App\Http\Controllers\contatoController::class, 'contato'])->name('app.clientes');
-    Route::get('/fornecedores', [\App\Http\Controllers\fornecedorController::class, 'index'])->name('app.fornecedores');
-    Route::get('/produtos', [\App\Http\Controllers\contatoController::class, 'contato'])->name('app.produtos');    
+Route::middleware('autenticacao')->prefix('/app')->group( function(){
+    Route::get('/clientes', [\App\Http\Controllers\clienteController::class, 'index'])->name('app.cliente');
+
+    Route::get('/fornecedores', [\App\Http\Controllers\fornecedorController::class, 'index'])->name('app.fornecedor');
+    Route::get('/fornecedores/adicionar', [\App\Http\Controllers\fornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
+    Route::post('/fornecedores/adicionar', [\App\Http\Controllers\fornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
+    Route::post('/fornecedores/listar', [\App\Http\Controllers\fornecedorController::class, 'listar'])->name('app.fornecedor.listar');
+
+
+    Route::get('/produtos', [\App\Http\Controllers\contatoController::class, 'contato'])->name('app.produto');    
+    Route::get('/sair', [\App\Http\Controllers\loginController::class, 'sair'])->name('app.sair');    
+    Route::get('/home', [\App\Http\Controllers\homeController::class, 'index'])->name('app.home');    
 });
 
 // Passando variaveis via get, onde codigo aceita apenas 0 até 9 e nome apenas string, o + diz que é necessário pelo menos 1 valor 
