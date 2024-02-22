@@ -29,7 +29,7 @@ class siteContatoFactory extends Factory
 
             'email' => fake()->email(),
 
-            'motivo_contato' => fake()->numberBetween(1,3),
+            'motivo_contatos_id' => fake()->numberBetween(1,3),
 
             'mensagem' => fake()->sentence(4)
 
