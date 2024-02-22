@@ -20,7 +20,7 @@ class siteContatoSeeder extends Seeder
         $contato->nome = 'SiteContato Seeder';
         $contato->telefone = '47999999999';
         $contato->email = 'sitecontatoSeeder1';
-        $contato->motivo_contato = '1';
+        $contato->motivo_contatos_id = '1';
         $contato->mensagem = 'Testando Seeder';
         $contato->save();
 
@@ -29,7 +29,7 @@ class siteContatoSeeder extends Seeder
             'nome' => 'SiteContato Seeder2',
             'telefone' => '47999999999',
             'email' => 'sitecontatoSeeder2',
-            'motivo_contato' => '3',
+            'motivo_contatos_id' => '3',
             'mensagem' => 'Testando Seeder 2'
         ];
         DB::table('site_contatos')->insert($dados);

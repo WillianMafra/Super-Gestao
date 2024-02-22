@@ -13,7 +13,7 @@ class siteContato extends Model
         'nome',
         'site',
         'email',
-        'motivo_contato',
+        'motivo_contatos_id',
         'mensagem',
         'telefone'
     ];
