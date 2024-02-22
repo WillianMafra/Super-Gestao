@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 // Models
 
@@ -31,6 +33,19 @@ class loginController extends Controller
 
         $request->validate($regrasValidacao, $retornoValidacao);
 
-        dd($request);
+        $credenciais = [
+            'email' => $request->input('usuario'),
+            'password' => $request->input('senha')
+        ];
+
+        // Tentar a autenticacao do usuário
+        if (Auth::attempt($credenciais)) {
+            // Authentication was successful
+            echo 'deu boa';
+            // return redirect()->intended('dashboard');
+        } else {
+            echo 'deu ruim';
+        }
+        // dd($request);
     }
 }
