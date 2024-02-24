@@ -29,8 +29,8 @@ class fornecedorController extends Controller
         ->where('estado_id', "$request->estado_id")
         ->leftJoin('estados','estados.id',  '=', 'fornecedores.estado_id')
         ->select('fornecedores.id', 'fornecedores.nome', 'fornecedores.site', 'email' , 'estados.nome as estado_nome')
-        ->get();
-        return view('app.fornecedor.listar', compact('fornecedores'));
+        ->paginate(5);
+        return view('app.fornecedor.listar', ['fornecedores' => $fornecedores, 'request' => $request->all()]);
     }
 
     public function adicionar(Request $request){
@@ -91,5 +91,12 @@ class fornecedorController extends Controller
         $fornecedor = Fornecedor::find($id);
         $estados = estados::pluck('nome', 'id');
         return view('app.fornecedor.form_editar', compact('fornecedor', 'id', 'estados'));
+    }
+
+    public function excluir($id){
+
+        Fornecedor::find($id)->delete();
+
+        return redirect()->route('app.fornecedor');
     }
 }

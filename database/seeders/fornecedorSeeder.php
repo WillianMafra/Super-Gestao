@@ -14,24 +14,24 @@ class fornecedorSeeder extends Seeder
      */
     public function run(): void
     {
-        $fornecedor = new Fornecedor();
-        $fornecedor->nome = 'Fornecedor Seeder';
-        $fornecedor->site = 'Fornecedor Seeder Site';
-        $fornecedor->estado_id = '2';
-        $fornecedor->email = 'email@seeder';
-        $fornecedor->save();
+        // $fornecedor = new Fornecedor();
+        // $fornecedor->nome = 'Fornecedor Seeder';
+        // $fornecedor->site = 'Fornecedor Seeder Site';
+        // $fornecedor->estado_id = '2';
+        // $fornecedor->email = 'email@seeder';
+        // $fornecedor->save();
 
-        // OU
+        // // OU
 
-        $dados = [
-            'nome' => 'Fornecedor Seeder 2',
-            'site' => 'Fornecedor Seeder 2',
-            'estado_id' => '1',
-            'email' => 'email@seeder2',
-        ];
-        DB::table('fornecedores')->insert($dados);
+        // $dados = [
+        //     'nome' => 'Fornecedor Seeder 2',
+        //     'site' => 'Fornecedor Seeder 2',
+        //     'estado_id' => '1',
+        //     'email' => 'email@seeder2',
+        // ];
+        // DB::table('fornecedores')->insert($dados);
 
-        \App\Models\Fornecedor::factory()->count(50)->create();
+        \App\Models\Fornecedor::factory()->count(200)->create();
 
 
     }

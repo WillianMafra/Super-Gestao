@@ -11,10 +11,11 @@
             <p>Fornecedor</p>
         </div>
 
-        <div class="menu">
+        
+        <div class="menu border">
             <ul>
-                <li><a href="{{route('app.fornecedor.adicionar')}}">Novo</a></li>
-                <li><a href="{{route('app.fornecedor')}}">Consulta</a></li>
+                <li><a class="bold" href="{{route('app.fornecedor.adicionar')}}">Novo</a></li>
+                <li><a class="bold" href="{{route('app.fornecedor')}}">Consulta</a></li>
             </ul>
         </div>
 

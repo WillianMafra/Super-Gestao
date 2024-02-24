@@ -37,23 +37,15 @@ Route::middleware('autenticacao')->prefix('/app')->group( function(){
     Route::get('/fornecedores/adicionar', [\App\Http\Controllers\fornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
     Route::post('/fornecedores/adicionar', [\App\Http\Controllers\fornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
     Route::post('/fornecedores/listar', [\App\Http\Controllers\fornecedorController::class, 'listar'])->name('app.fornecedor.listar');
+    Route::get('/fornecedores/listar/{page?}', [\App\Http\Controllers\fornecedorController::class, 'listar'])->name('app.fornecedor.listar');
     Route::get('/fornecedores/editar/{id}', [\App\Http\Controllers\fornecedorController::class, 'editar'])->name('app.fornecedor.form_editar');
     Route::get('/fornecedores/editar/{id}', [\App\Http\Controllers\fornecedorController::class, 'editar'])->name('app.fornecedor.editar');
     Route::post('/fornecedores/editar/{id}', [\App\Http\Controllers\fornecedorController::class, 'editar'])->name('app.fornecedor.editar');
     Route::get('/fornecedores/excluir/{id}', [\App\Http\Controllers\fornecedorController::class, 'excluir'])->name('app.fornecedor.excluir');
-
-
-    Route::get('/produtos', [\App\Http\Controllers\contatoController::class, 'contato'])->name('app.produto');    
+  
     Route::get('/sair', [\App\Http\Controllers\loginController::class, 'sair'])->name('app.sair');    
-    Route::get('/home', [\App\Http\Controllers\homeController::class, 'index'])->name('app.home');    
+    Route::get('/home', [\App\Http\Controllers\homeController::class, 'index'])->name('app.home'); 
+
+    Route::resource('produto', \App\Http\Controllers\produtoController::class);    
 });
 
-// Passando variaveis via get, onde codigo aceita apenas 0 até 9 e nome apenas string, o + diz que é necessário pelo menos 1 valor 
-// Route::get('/contato/{nome}/{codigo}',
-//     function (
-//         string $nome,
-//         int $codigo
-//     )  {
-//         echo $nome . $codigo;  
-//     }
-// )->where('codigo', '[0-9]+')->where('nome', '[A-Za-z]+');
