@@ -37,6 +37,10 @@ Route::middleware('autenticacao')->prefix('/app')->group( function(){
     Route::get('/fornecedores/adicionar', [\App\Http\Controllers\fornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
     Route::post('/fornecedores/adicionar', [\App\Http\Controllers\fornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
     Route::post('/fornecedores/listar', [\App\Http\Controllers\fornecedorController::class, 'listar'])->name('app.fornecedor.listar');
+    Route::get('/fornecedores/editar/{id}', [\App\Http\Controllers\fornecedorController::class, 'editar'])->name('app.fornecedor.form_editar');
+    Route::get('/fornecedores/editar/{id}', [\App\Http\Controllers\fornecedorController::class, 'editar'])->name('app.fornecedor.editar');
+    Route::post('/fornecedores/editar/{id}', [\App\Http\Controllers\fornecedorController::class, 'editar'])->name('app.fornecedor.editar');
+    Route::get('/fornecedores/excluir/{id}', [\App\Http\Controllers\fornecedorController::class, 'excluir'])->name('app.fornecedor.excluir');
 
 
     Route::get('/produtos', [\App\Http\Controllers\contatoController::class, 'contato'])->name('app.produto');    

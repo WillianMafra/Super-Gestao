@@ -17,20 +17,22 @@ class fornecedorSeeder extends Seeder
         $fornecedor = new Fornecedor();
         $fornecedor->nome = 'Fornecedor Seeder';
         $fornecedor->site = 'Fornecedor Seeder Site';
-        $fornecedor->uf = 'SC';
+        $fornecedor->estado_id = '2';
         $fornecedor->email = 'email@seeder';
         $fornecedor->save();
 
         // OU
 
-
         $dados = [
             'nome' => 'Fornecedor Seeder 2',
             'site' => 'Fornecedor Seeder 2',
-            'uf' => 'SP',
+            'estado_id' => '1',
             'email' => 'email@seeder2',
         ];
         DB::table('fornecedores')->insert($dados);
+
+        \App\Models\Fornecedor::factory()->count(50)->create();
+
 
     }
 

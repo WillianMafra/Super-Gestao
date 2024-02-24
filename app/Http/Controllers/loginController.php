@@ -54,6 +54,6 @@ class loginController extends Controller
 
     public function sair(Request $request){
         $request->session()->invalidate();
-        return redirect()->route('site.login');
+        return redirect()->route('site.index');
     }
 }

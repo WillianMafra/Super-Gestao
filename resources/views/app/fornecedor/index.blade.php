@@ -24,7 +24,11 @@
                     @csrf
                     <input name="nome" placeholder="Nome" type="text" class="borda-preta">
                     <input name="site" placeholder="Site" type="text" class="borda-preta">
-                    <input name="uf" placeholder="UF" type="text" class="borda-preta">
+                    <select name="estado_id"  class="borda-preta">
+                        @foreach ($estados as $id => $nome)
+                            <option value="{{ $id }}"> {{ $nome }}</option>
+                        @endforeach
+                        </select>
                     <input name="email" placeholder="E-mail" type="text" class="borda-preta">
                     <button type="submit" class="borda-preta">Pesquisar</button>
                 </form>

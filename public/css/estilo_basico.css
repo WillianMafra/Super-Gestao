@@ -193,3 +193,7 @@ button:hover {
 .redes-sociais img {
     margin: 0px 15px 0px 15px;
 }
+
+.bold {
+    font-weight: bold;
+}
