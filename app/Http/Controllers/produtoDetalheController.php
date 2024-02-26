@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Unidade;
+use App\Models\produtoDetalhe;
 
 class produtoDetalheController extends Controller
 {
@@ -19,7 +21,8 @@ class produtoDetalheController extends Controller
      */
     public function create()
     {
-        //
+        $dados['unidades'] = Unidade::pluck('descricao', 'id');
+        return view('app.produto_detalhe.create', $dados);
     }
 
     /**
@@ -27,7 +30,31 @@ class produtoDetalheController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->get('_token') != ''){
+            $dados = [
+                'produto_id' => $request->get('produto_id'),
+                'comprimento' => $request->get('comprimento'),
+                'largura' => $request->get('largura'),
+                'altura' => $request->get('altura'),
+                'unidade_id' => $request->get('unidade_id')
+            ];
+            $regrasValidacao = [
+                'produto_id' => 'required|gt:0',
+                'comprimento' => 'required|gt:0',
+                'altura' => 'required|gt:0',
+                'largura' => 'required|gt:0',
+            ];
+            
+            $request->validate($regrasValidacao);
+
+            $detalheProduto = new produtoDetalhe;
+            $detalheProduto->fill($dados);
+            $detalheProduto->save();
+
+            return redirect()->route('produto.index');
+        }
+        return redirect()->route('produto.index');
+
     }
 
     /**
@@ -40,10 +67,15 @@ class produtoDetalheController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    *
+    * @param int $produtoDetalheId
+    * @return \Illuminate\Http\Response
+    */
+    public function edit($produtoDetalheId)
     {
-        //
+        $dados['unidades'] = Unidade::pluck('descricao', 'id');
+        $dados['produto_detalhe'] = ProdutoDetalhe::find($produtoDetalheId);
+        return view('app.produto_detalhe.edit', $dados);
     }
 
     /**
@@ -51,7 +83,11 @@ class produtoDetalheController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $detalheProduto = produtoDetalhe::find($id);
+        $detalheProduto->update($request->all());
+        
+        return redirect()->route('produto.index');
+
     }
 
     /**
