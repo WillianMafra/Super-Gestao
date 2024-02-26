@@ -24,11 +24,11 @@
                 @endif
                 <form method="POST" action="{{ route('app.fornecedor.adicionar')}}">
                     @csrf
-                    <input name="nome" placeholder="Nome" type="text" class="borda-preta">
+                    <input value="{{ old('nome') ?? ''}}" name="nome" placeholder="Nome" type="text" class="borda-preta">
                     @if ($errors->has('nome'))
                         {{ $errors->first('nome')}}
                     @endif
-                    <input name="site" placeholder="Site" type="text" class="borda-preta">
+                    <input value="{{ old('site') ?? ''}}" name="site" placeholder="Site" type="text" class="borda-preta">
                     @if ($errors->has('site'))
                         {{ $errors->first('site')}}
                     @endif
@@ -40,7 +40,7 @@
                     @if ($errors->has('estado_id'))
                         {{ $errors->first('estado_id')}}
                     @endif
-                    <input name="email" placeholder="E-mail" type="text" class="borda-preta">
+                    <input value="{{ old('email') ?? ''}}" name="email" placeholder="E-mail" type="text" class="borda-preta">
                     @if ($errors->has('email'))
                         {{ $errors->first('email')}}
                     @endif

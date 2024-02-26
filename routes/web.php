@@ -47,5 +47,7 @@ Route::middleware('autenticacao')->prefix('/app')->group( function(){
     Route::get('/home', [\App\Http\Controllers\homeController::class, 'index'])->name('app.home'); 
 
     Route::resource('produto', \App\Http\Controllers\produtoController::class);    
+
+    Route::resource('produto-detalhe', \App\Http\Controllers\produtoDetalheController::class);    
 });
 
