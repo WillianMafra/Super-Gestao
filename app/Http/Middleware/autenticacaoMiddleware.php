@@ -16,10 +16,13 @@ class autenticacaoMiddleware
     public function handle(Request $request, Closure $next): Response
     {
 
-        $retorno = $next($request);
-        $retorno->setStatusCode('201', 'Aqui pode ir o status text');
+        $autenticado = $request->session()->get('autenticado');
 
-        return $retorno;
+        if($autenticado == true){
+            return $next($request);
+        } else {
+            return redirect()->route('site.login');
+        }
 
     }
 }

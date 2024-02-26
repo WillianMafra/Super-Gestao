@@ -20,6 +20,9 @@
                     @if ($errors->has('senha'))
                         {{ $errors->first('senha'); }}
                     @endif
+                    @if (isset($erroLogin))
+                        {{ $erroLogin }}
+                    @endif
                     <button type="submit" class="borda-preta">Acessar</button>
                 </form>
             </div>

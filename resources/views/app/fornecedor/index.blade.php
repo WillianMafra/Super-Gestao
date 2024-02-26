@@ -1,55 +1,41 @@
-<h3>Salve</h3>
 
-{{-- @if ()
-    
-@endif
+@extends('app.layouts.basico');
 
-@unless ()
-    
-@endunless
+@section('titulo', 'Fornecedor')
 
-@while ()
-    
-@endwhile --}}
+@section('conteudo')
 
-{{-- @isset($record)
-    
-@endisset
+    <div class="conteudo-pagina">
 
-@empty($record)
-    
-@endempty
+        <div class="titulo-pagina-2">
+            <p>Fornecedor</p>
+        </div>
 
-@switch($type)
-    @case(1)
         
-        @break
-    @case(2)
+        <div class="menu border">
+            <ul>
+                <li><a class="bold" href="{{route('app.fornecedor.adicionar')}}">Novo</a></li>
+                <li><a class="bold" href="{{route('app.fornecedor')}}">Consulta</a></li>
+            </ul>
+        </div>
+
+        <div class="informacao-pagina">
+            <div style="width: 30%; margin-left: auto; margin-right:auto">
+                <form method="POST" action="{{ route('app.fornecedor.listar')}}">
+                    @csrf
+                    <input name="nome" placeholder="Nome" type="text" class="borda-preta">
+                    <input name="site" placeholder="Site" type="text" class="borda-preta">
+                    <select name="estado_id"  class="borda-preta">
+                        @foreach ($estados as $id => $nome)
+                            <option value="{{ $id }}"> {{ $nome }}</option>
+                        @endforeach
+                        </select>
+                    <input name="email" placeholder="E-mail" type="text" class="borda-preta">
+                    <button type="submit" class="borda-preta">Pesquisar</button>
+                </form>
+            </div>
         
-        @break
-    @default
-        
-@endswitch --}}
+        </div>
+    </div>
 
-{{-- @forelse ($collection as $item)
-    
-@empty
-    
-@endforelse --}}
-
-
-
-{{-- // Podemos pegar o valor da iteraçao com o $loop->iteration --}}
-{{-- 
-@foreach ($collection as $item)
-    $@if ($loop->last)
-        
-    @endif
-    @if ($loop->first)
-       
-    @endif
-
-    @php
-        $loop->iteration;
-    @endphp
-@endforeach --}}
+@endsection

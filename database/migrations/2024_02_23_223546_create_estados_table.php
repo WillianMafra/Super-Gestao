@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('log_acessos', function (Blueprint $table) {
+        Schema::create('estados', function (Blueprint $table) {
             $table->id();
-            $table->string('ip', 20);
-            $table->string('rota', 200);
+            $table->string('uf', 2);
+            $table->string('nome', 25);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('log_acessos');
+        Schema::dropIfExists('estados');
     }
 };
