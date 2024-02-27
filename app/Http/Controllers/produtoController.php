@@ -13,6 +13,7 @@ class produtoController extends Controller
      */
     public function index(Request $request)
     {
+        // dd(Produto::with('produtoDetalhe')->get());
         $produto = Produto::join('unidades', 'unidades.id', '=', 'produtos.unidade_id')->select('produtos.*', 'unidades.unidade')->paginate(5);
 
         $dados['produtos'] = $produto;
