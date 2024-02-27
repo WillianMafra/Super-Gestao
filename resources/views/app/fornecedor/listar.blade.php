@@ -1,5 +1,5 @@
 
-@extends('app.layouts.basico');
+@extends('app.layouts.basico')
 
 @section('titulo', 'Fornecedor - Listar')
 

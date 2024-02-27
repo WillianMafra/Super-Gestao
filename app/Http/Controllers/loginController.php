@@ -42,7 +42,7 @@ class loginController extends Controller
         // Tentar a autenticacao do usuário
         if (Auth::attempt($credenciais)) {
             $request->session()->put('autenticado', true);
-            return redirect()->route('app.home');
+            return redirect()->route('pedidos.index');
         } else {
             $request->session()->invalidate();
             $erroLogin = 'Usuário ou senha inválido';

@@ -1,5 +1,5 @@
 
-@extends('app.layouts.basico');
+@extends('app.layouts.basico')
 
 @section('titulo', 'Produto - Adicionar')
 
@@ -37,7 +37,13 @@
                         @foreach ($unidades as $id => $descricao)
                             <option value="{{ $id }}" {{ old('unidade_id') == $id ? 'selected' : '' }}> {{ $descricao }}</option>
                         @endforeach
-                        </select>
+                    </select>
+                    <label class="bold" for="fornecedor_id">Fornecedor</label>
+                    <select name="fornecedor_id" value="{{ old('fornecedor_id') }}" class="borda-preta">
+                        @foreach ($fornecedores as $id => $nome)
+                            <option value="{{ $id }}" {{ old('fornecedor_id') == $id ? 'selected' : '' }}> {{ $nome }}</option>
+                        @endforeach
+                    </select>
                     <button type="submit" class="borda-preta">Adicionar</button>
                 </form>
             </div>

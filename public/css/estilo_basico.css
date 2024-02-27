@@ -197,3 +197,8 @@ button:hover {
 .bold {
     font-weight: bold;
 }
+
+.button-extra-small{
+    width: 15%;
+    font-size: 15px !important;
+}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Unidade;
 use App\Models\produtoDetalhe;
+use App\Models\Produto;
 
 class produtoDetalheController extends Controller
 {
@@ -19,8 +20,9 @@ class produtoDetalheController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($produtoId)
     {
+        $dados['produto'] = Produto::find($produtoId);
         $dados['unidades'] = Unidade::pluck('descricao', 'id');
         return view('app.produto_detalhe.create', $dados);
     }
@@ -73,6 +75,7 @@ class produtoDetalheController extends Controller
     */
     public function edit($produtoDetalheId)
     {
+
         $dados['unidades'] = Unidade::pluck('descricao', 'id');
         $dados['produto_detalhe'] = ProdutoDetalhe::find($produtoDetalheId);
         return view('app.produto_detalhe.edit', $dados);

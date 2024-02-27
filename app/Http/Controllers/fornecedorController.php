@@ -13,10 +13,6 @@ use App\Models\Fornecedor;
 class fornecedorController extends Controller
 {
 
-    public function __construct(){
-        $this->middleware('log.acesso');
-    }
-
     public function index(){
         $estados = estados::pluck('nome', 'id');
         return view('app.fornecedor.index', compact('estados'));
@@ -29,6 +25,7 @@ class fornecedorController extends Controller
         ->where('estado_id', "$request->estado_id")
         ->leftJoin('estados','estados.id',  '=', 'fornecedores.estado_id')
         ->select('fornecedores.id', 'fornecedores.nome', 'fornecedores.site', 'email' , 'estados.nome as estado_nome')
+        ->orderBy('fornecedores.nome')
         ->paginate(5);
         return view('app.fornecedor.listar', ['fornecedores' => $fornecedores, 'request' => $request->all()]);
     }
