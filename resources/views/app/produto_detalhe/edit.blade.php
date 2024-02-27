@@ -1,5 +1,5 @@
 
-@extends('app.layouts.basico');
+@extends('app.layouts.basico')
 
 @section('titulo', 'Detalhes do Produto')
 
@@ -13,7 +13,7 @@
 
         <div class="menu border">
             <ul>
-                <li><a class="bold" href="#">Voltar</a></li>
+                <li><a class="bold" href="{{route('produto.index')}}">Voltar</a></li>
             </ul>
         </div>
 

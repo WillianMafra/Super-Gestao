@@ -1,19 +1,19 @@
 
 @extends('app.layouts.basico')
 
-@section('titulo', 'Produto')
+@section('titulo', 'Clientes')
 
 @section('conteudo')
 
     <div class="conteudo-pagina">
 
         <div class="titulo-pagina-2">
-            <p>Produto</p>
+            <p>Clientes</p>
         </div>
 
         <div class="menu border">
             <ul>
-                <li><a class="bold" href="{{route('produto.create')}}">Novo</a></li>
+                <li><a class="bold" href="{{route('cliente.create')}}">Novo</a></li>
             </ul>
         </div>
 
@@ -25,24 +25,19 @@
                         <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>Descrição</th>
-                                <th>Peso</th>
-                                <th>Unidade</th>
-                                <th class="text-center" colspan="2">Ações</th>
+                                <th>Data Criação</th>
+                                <th style="width: 10%" class="text-center" colspan="2">Ações</th>
                             </tr>    
                         </thead>
     
                         <tbody>
-                            @foreach ($produtos as $produto)
+                            @foreach ($clientes as $cliente)
                                 <tr>
-                                    <th>{{ $produto->nome }}</th>
-                                    <th>{{ $produto->descricao }}</th>
-                                    <th>{{ $produto->peso }}</th>
-                                    <th>{{ $produto->unidade }}</th>
-                                    <th><a href="{{route('produto.show', $produto->id) }}"><button class="btn btn-success btn-sm" >Visualizar</button></a></th>
-                                    <th><a href="{{route('produto.edit', $produto->id) }}"><button class="btn btn-primary btn-sm" >Editar</button></a></th>
+                                    <th>{{ $cliente->nome }}</th>
+                                    <th>{{ $cliente->created_at }}</th>
+                                    <th><a href="{{route('cliente.edit', $cliente->id) }}"><button class="btn btn-primary btn-sm" >Editar</button></a></th>
                                     <th>
-                                        <form method="POST" action="{{ route('produto.destroy', $produto->id) }}">
+                                        <form method="POST" action="{{ route('cliente.destroy', $cliente->id) }}">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-danger btn-sm" >Excluir</button>
@@ -51,7 +46,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $produtos->appends($request)->links() }}
+                    {{ $clientes->appends($request)->links() }}
                 </div>
             </div>
         

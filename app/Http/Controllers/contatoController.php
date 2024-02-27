@@ -5,20 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-// Midlleware
-use App\Http\Middleware\logAcessoMiddleware;
-
 // Models
 use App\Models\siteContato;
 use App\Models\motivoContato;
 
 class contatoController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('log.acesso');
-    }
 
     public function contato(){
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use App\Models\Unidade;
+use App\Models\Fornecedor;
 use Illuminate\Http\Request;
 
 class produtoController extends Controller
@@ -28,9 +29,10 @@ class produtoController extends Controller
     public function create(Request $request)
     {
         $unidades = Unidade::pluck('descricao', 'id');
-
+        $fornecedores = Fornecedor::orderBy('nome')->pluck('nome', 'id');
         $dados['request'] = $request->all();
         $dados['unidades'] = $unidades;
+        $dados['fornecedores'] = $fornecedores;
         return view('app.produto.create', $dados);
     }
 
@@ -65,7 +67,8 @@ class produtoController extends Controller
      */
     public function show(Produto $produto)
     {
-        //
+        $dados['produto'] = $produto;
+        return view('app.produto.show', $dados);
     }
 
     /**
@@ -74,7 +77,9 @@ class produtoController extends Controller
     public function edit(Produto $produto)
     {
         $unidades = Unidade::pluck('descricao', 'id');
+        $fornecedores = Fornecedor::orderBy('nome')->pluck('nome', 'id');
 
+        $dados['fornecedores'] = $fornecedores;
         $dados['produto'] = $produto;
         $dados['unidades'] = $unidades;
 
